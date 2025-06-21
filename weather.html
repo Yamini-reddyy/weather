@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Weather App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e0f7fa;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .weather-app {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 30px;
+      display: inline-block;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 200px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      background: #26c6da;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .info {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+
+    .info span {
+      display: block;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="weather-app">
+    <h2>Weather App</h2>
+    <input type="text" id="cityInput" placeholder="Enter city name">
+    <button onclick="updateWeather()">Search</button>
+
+    <div class="info">
+      <span id="city">City: --</span>
+      <span id="day">Day: --</span>
+      <span id="date">Date: --</span>
+      <span id="time">Time: --</span>
+      <span id="temp">Temperature: -- °C</span>
+    </div>
+  </div>
+
+  <script>
+    function updateWeather() {
+      const city = document.getElementById("cityInput").value;
+      const now = new Date();
+
+      const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const day = days[now.getDay()];
+      const date = now.toLocaleDateString();
+      const time = now.toLocaleTimeString();
+
+      // Dummy temperature value – replace with real API later
+      const temp = Math.floor(Math.random() * 15 + 20); // 20°C to 35°C
+
+      document.getElementById("city").textContent = "City: " + city;
+      document.getElementById("day").textContent = "Day: " + day;
+      document.getElementById("date").textContent = "Date: " + date;
+      document.getElementById("time").textContent = "Time: " + time;
+      document.getElementById("temp").textContent = "Temperature: " + temp + " °C";
+    }
+  </script>
+
+</body>
+</html>
